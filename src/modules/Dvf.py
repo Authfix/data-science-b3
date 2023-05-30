@@ -6,8 +6,10 @@ class Cleaner:
     def __init__(self):
         pass
 
-    def load(self, files: list[str]) -> pd.DataFrame:
+    def initialize(self, files: list[str]) -> pd.DataFrame:
         self.df = pd.concat([pd.read_csv(file, sep='|', decimal=',', usecols=self.COLS) for file in files])
+
+        return self.df
 
     def clean(self):
         self.df['Nature mutation'] = self.df['Nature mutation'].astype('category')
